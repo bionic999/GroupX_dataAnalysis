@@ -43,7 +43,7 @@ def clean_data(df, dataset_name):
         logging.error(f"Error cleaning {dataset_name}: {e}")
         return None
     
-def store_in_database(df1, df2, db_name=r"C:\Users\Admin\Desktop\GroupX_DataAnalysis\GroupX_dataAnalysis\scripts\database.db"):
+def store_in_database(df1, df2, db_name=r"C:\Users\Admin\Desktop\GroupX_DataAnalysis\scripts\database.db"):
     """Store datasets in an SQLite database."""
     try:
         conn = sqlite3.connect(db_name)
@@ -57,8 +57,8 @@ def store_in_database(df1, df2, db_name=r"C:\Users\Admin\Desktop\GroupX_DataAnal
 def main():
     """Main function to run the data pipeline."""
     # Paths to datasets (update after downloading from World Bank)
-    dataset1_path = r"C:\Users\Admin\Desktop\GroupX_DataAnalysis\GroupX_dataAnalysis\data\raw\Individuals_using_the_internet.csv "
-    dataset2_path = r"C:\Users\Admin\Desktop\GroupX_DataAnalysis\GroupX_dataAnalysis\data\raw/Youth_unemployment.csv"
+    dataset1_path = r"C:\Users\Admin\Desktop\GroupX_DataAnalysis\data\raw\Individuals_using_the_internet.csv "
+    dataset2_path = r"C:\Users\Admin\Desktop\GroupX_DataAnalysis\data\raw\Youth_unemployment.csv"
     
     # Load data
     df1 = load_data(dataset1_path, "Individuals_using_the_internet")
@@ -80,8 +80,8 @@ def main():
     store_in_database(df1_clean, df2_clean)
     
     # Save cleaned data
-    df1_clean.to_csv(r"C:\Users\Admin\Desktop\GroupX_DataAnalysis\GroupX_dataAnalysis\data\processed\Individuals_using_the_internet_clean.csv", index=False)
-    df2_clean.to_csv(r"C:\Users\Admin\Desktop\GroupX_DataAnalysis\GroupX_dataAnalysis\data\processed\Youth_unemployment_clean.csv", index=False)
+    df1_clean.to_csv(r"C:\Users\Admin\Desktop\GroupX_DataAnalysis\data\processed\Individuals_using_the_internet_clean.csv", index=False)
+    df2_clean.to_csv(r"C:\Users\Admin\Desktop\GroupX_DataAnalysis\data\processed\Youth_unemployment_clean.csv", index=False)
     logging.info("Cleaned datasets saved")
 
 if __name__ == "__main__":
