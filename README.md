@@ -6,7 +6,7 @@ Data Analysis And Visualization group project
 This repository contains code for analyzing two South African datasets from the World Bank to explore [Individuals Using the Internet, Youth Unemployment ].
 
 ## Setup Instructions
-1. Clone the repo: `git clone https://github.com/your-username/NDTA631_GroupX_DataAnalysis.git`
+1. Clone the repo: `git clone https://github.com/your-username/GroupX_DataAnalysis.git`
 2. Install dependencies: `pip install -r requirements.txt` (requires Python 3.8+ installed from python.org).
 3. Download datasets and place in `data/` (see below for links).
 4. Run the main script: `python scripts/data_pipeline.py`
