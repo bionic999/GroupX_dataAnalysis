@@ -28,14 +28,14 @@ def clean_data(df, dataset_name):
             raise ValueError(f"No data to clean for {dataset_name}")
         logging.info(f"Cleaning {dataset_name}, initial shape: {df.shape}")
         
-        # Handle missing values: fill numbers with mean, text with most common value
+       
         for col in df.columns:
             if df[col].dtype in ['int64', 'float64']:
                 df[col] = df[col].fillna(df[col].mean())
             else:
                 df[col] = df[col].fillna(df[col].mode()[0])
         
-        # Remove duplicates
+      
         df = df.drop_duplicates()
         logging.info(f"Cleaned {dataset_name}, final shape: {df.shape}")
         return df
@@ -56,11 +56,11 @@ def store_in_database(df1, df2, db_name=r"C:\Users\Admin\Desktop\GroupX_DataAnal
 
 def main():
     """Main function to run the data pipeline."""
-    # Paths to datasets (update after downloading from World Bank)
+    
     dataset1_path = r"C:\Users\Admin\Desktop\GroupX_DataAnalysis\data\raw\Individuals_using_the_internet.csv "
     dataset2_path = r"C:\Users\Admin\Desktop\GroupX_DataAnalysis\data\raw\Youth_unemployment.csv"
     
-    # Load data
+    
     df1 = load_data(dataset1_path, "Individuals_using_the_internet")
     df2 = load_data(dataset2_path, "Youth_unemployment")
     
@@ -68,7 +68,7 @@ def main():
         logging.error("Failed to load datasets. Check paths and try again.")
         return
     
-    # Clean data
+    
     df1_clean = clean_data(df1, "Individuals_using_the_internet")
     df2_clean = clean_data(df2, "Youth_unemployment")
     
@@ -76,10 +76,10 @@ def main():
         logging.error("Failed to clean datasets.")
         return
     
-    # Store in database
+    
     store_in_database(df1_clean, df2_clean)
     
-    # Save cleaned data
+    
     df1_clean.to_csv(r"C:\Users\Admin\Desktop\GroupX_DataAnalysis\data\processed\Individuals_using_the_internet_clean.csv", index=False)
     df2_clean.to_csv(r"C:\Users\Admin\Desktop\GroupX_DataAnalysis\data\processed\Youth_unemployment_clean.csv", index=False)
     logging.info("Cleaned datasets saved")
