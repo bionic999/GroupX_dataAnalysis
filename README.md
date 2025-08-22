@@ -5,12 +5,12 @@ Data Analysis And Visualization group project
 ## Overview
 This repository contains code for analyzing two South African datasets from the World Bank to explore [Individuals Using the Internet, Youth Unemployment ]. The aim is to see whether growing internet access has had an impact on youth employment challenges.
 
-##Objectives
+## Objectives
 
-*Analyze internet usage trends in South Africa.
-*Analyze youth unemployment trends in South Africa.
-*Compare both datasets to explore possible relationships.
-*Discuss implications for South Africa’s development.
+* Analyze internet usage trends in South Africa.
+* Analyze youth unemployment trends in South Africa.
+* Compare both datasets to explore possible relationships.
+* Discuss implications for South Africa’s development.
 
 ## Setup Instructions
 1. Clone the repo: `git clone https://github.com/your-username/GroupX_DataAnalysis.git`
