@@ -23,7 +23,7 @@ Employment to population ratio, 15+, total (%) (national estimate)]. The aim is 
 - Dataset 1: [Poverty headcount ratio at national poverty lines (% of population)] from https://data360.worldbank.org/en/indicator/WB_WDI_SI_POV_NAHC
   * Measures the share of the working-age population (15 years and older) that is employed. Employment includes wage jobs and self-employment, even part-time work.
 - Dataset 2: [Employment to population ratio, 15+, total (%) (national estimate)] from https://data360.worldbank.org/en/indicator/WB_WDI_SL_EMP_TOTL_SP_NE_ZS
-  *Percentage of the population living below the national poverty line, as defined by each country. Based on household consumption or income surveys.
+  * Percentage of the population living below the national poverty line, as defined by each country. Based on household consumption or income surveys.
 
 ## Notes
 - Ensure unique datasets to avoid 15% penalty.
