@@ -43,6 +43,23 @@ def clean_data(df, dataset_name):
         logging.error(f"Error cleaning {dataset_name}: {e}")
         return None
     
+def filter_south_africa_data(df, country_column, dataset_name):
+    """Filter the dataset to include only rows where the country is South Africa."""
+    try:
+        if df is None:
+            raise ValueError(f"No data to filter for {dataset_name}")
+        if country_column not in df.columns:
+            raise ValueError(f"Column '{country_column}' not found in {dataset_name}")
+        
+        logging.info(f"Filtering {dataset_name} for South Africa data")
+        df_filtered = df[df[country_column].str.strip().str.lower() == "south africa"]
+        logging.info(f"Filtered {dataset_name}, resulting shape: {df_filtered.shape}")
+        return df_filtered
+    except Exception as e:
+        logging.error(f"Error filtering {dataset_name}: {e}")
+        return None        
+    
+    
 def store_in_database(df1, df2, db_name=r"C:\Users\Admin\Desktop\GroupX_DataAnalysis\NDTA631-DataAnalysis-GroupX\scripts\database.db"):
     """Store datasets in an SQLite database."""
     try:
@@ -76,13 +93,22 @@ def main():
         logging.error("Failed to clean datasets.")
         return
     
+        # Filter for South African data
+    df1_filtered = filter_south_africa_data(df1_clean, "REF_AREA_LABEL", "employment")
+    df2_filtered = filter_south_africa_data(df2_clean, "REF_AREA_LABEL", "poverty")
     
-    store_in_database(df1_clean, df2_clean)
+    if df1_filtered is None or df2_filtered is None:
+        logging.error("Failed to filter datasets for South Africa.")
+        return
     
     
-    df1_clean.to_csv(r"C:\Users\Admin\Desktop\GroupX_DataAnalysis\NDTA631-DataAnalysis-GroupX\data\processed\employment_clean.csv", index=False)
-    df2_clean.to_csv(r"C:\Users\Admin\Desktop\GroupX_DataAnalysis\NDTA631-DataAnalysis-GroupX\data\processed\poverty_clean.csv", index=False)
-    logging.info("Cleaned datasets saved")
+    
+    store_in_database(df1_filtered, df2_filtered)
+    
+    
+    df1_filtered.to_csv(r"C:\Users\Admin\Desktop\GroupX_DataAnalysis\NDTA631-DataAnalysis-GroupX\data\processed\employment_sa_clean.csv", index=False)
+    df2_filtered.to_csv(r"C:\Users\Admin\Desktop\GroupX_DataAnalysis\NDTA631-DataAnalysis-GroupX\data\processed\poverty_sa_clean.csv", index=False)
+    logging.info("Cleaned and filtered datasets saved")
 
 if __name__ == "__main__":
     main()      
