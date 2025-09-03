@@ -7,10 +7,11 @@ import streamlit as st
 employment_df = pd.read_csv(r"C:\Users\Admin\Desktop\GroupX_DataAnalysis\NDTA631-DataAnalysis-GroupX\data\processed\employment_sa_clean.csv")
 poverty_df = pd.read_csv(r"C:\Users\Admin\Desktop\GroupX_DataAnalysis\NDTA631-DataAnalysis-GroupX\data\processed\poverty_sa_clean.csv")
 
-st.title("📊 South Africa Employment & Poverty Dashboard")
+st.title("GroupX Data Analysis")
+st.title("South Africa Employment & Poverty Dashboard")
 st.write("This dashboard displays the cleaned and analysed datasets using interactive visualisations.")
 
-#Bar plotliejh6
+#Bar plot
 st.header("Average comparison(Bar plot)")
 ave_values = {
     "Employment Rate": employment_df.select_dtypes(include='number').mean().mean(),
